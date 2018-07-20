@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const leaderRouter = express.Router();
 
+leaderRouter.use(bodyParser.json());
 leaderRouter.route('/')
   .all((req, res, next)=> {
         res.statusCode = 200;
@@ -12,7 +13,7 @@ leaderRouter.route('/')
         res.end("Will send all the leaders to you");
   })
   .post((req, res, next) => {
-        res.end("will add the leader: " + req.body.name +  " with details: " + req.body.description);
+        res.end("will add a leader: " + req.body.name +  " with details: " + req.body.description);
    })
   .put((req, res, next) => {
         res.statusCode = 403;
